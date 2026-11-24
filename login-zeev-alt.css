@@ -161,12 +161,16 @@ form::after {
    --------------------------------------------------------------------- */
 @media (min-width: 992px) {
 
-  /* Aba "Iniciar aplicativos": card à direita, centralizado na vertical */
+  /* Aba "Iniciar aplicativos": card à direita, centralizado na vertical.
+     A borda direita do card fica alinhada com o fim do menu de abas
+     (o menu termina 390px à direita do centro da tela). Se o card não
+     alinhar exatamente, ajuste o 390px: maior empurra o card para a
+     direita, menor puxa para a esquerda. */
   :has(#appsCardsLg.active) .col-lg-4:has(.login-form) {
     position: fixed;
     top: 0;
     bottom: 0;
-    right: 7vw;
+    right: max(7vw, calc(50vw - 390px));
     left: auto;
     margin: auto 0;
     width: 440px;
@@ -188,7 +192,7 @@ form::after {
     left: 7vw;
     top: 50%;
     translate: 0 -50%;
-    width: min(720px, 50vw);
+    width: min(720px, 38vw);
     aspect-ratio: 720 / 420;
     background: url(hero.svg) 0 50% / contain no-repeat;
     pointer-events: none;
