@@ -349,7 +349,7 @@ form::after {
   @supports (anchor-name: --a) {
     :has(#appsCardsLg.active) #vd-l {
       top: auto;
-      bottom: calc(anchor(--vd-card bottom) + 55px);
+      bottom: calc(anchor(--vd-card bottom) + 60px);
       right: calc(anchor(--vd-card right) + 68px);
     }
   }
