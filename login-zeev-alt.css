@@ -112,7 +112,7 @@
 }
 
 /* Texto de apoio (6px abaixo do título; 20px até o botão) */
-#mfe-zeev-login form::before {
+#mfe-zeev-login .login-form form::before {
   content: "Use seu e-mail corporativo para ver seus protocolos e abrir novas solicitações.";
   display: block;
   margin: 6px 0 20px;
@@ -121,7 +121,7 @@
 }
 
 /* Botão "Entrar com Microsoft" */
-#mfe-zeev-login .btn-secondary:not(#btnGoogleLogin) {
+#mfe-zeev-login .login-form .btn-secondary:not(#btnGoogleLogin) {
   width: 100% !important;
   height: 52px !important;
   margin: 0 !important;
@@ -139,24 +139,24 @@
   box-shadow: none !important;
   cursor: pointer;
 }
-#mfe-zeev-login .btn-secondary:not(#btnGoogleLogin) span,
-#mfe-zeev-login .btn-secondary:not(#btnGoogleLogin) div,
-#mfe-zeev-login .btn-secondary:not(#btnGoogleLogin) p {
+#mfe-zeev-login .login-form .btn-secondary:not(#btnGoogleLogin) span,
+#mfe-zeev-login .login-form .btn-secondary:not(#btnGoogleLogin) div,
+#mfe-zeev-login .login-form .btn-secondary:not(#btnGoogleLogin) p {
   color: #1d1934 !important;
   font: 600 16px "Inter", system-ui, sans-serif !important;
   margin: 0 !important;
 }
-#mfe-zeev-login .btn-secondary:not(#btnGoogleLogin) img,
-#mfe-zeev-login .btn-secondary:not(#btnGoogleLogin) svg {
+#mfe-zeev-login .login-form .btn-secondary:not(#btnGoogleLogin) img,
+#mfe-zeev-login .login-form .btn-secondary:not(#btnGoogleLogin) svg {
   width: 20px !important;
   height: 20px !important;
 }
-#mfe-zeev-login .btn-secondary:not(#btnGoogleLogin):hover {
+#mfe-zeev-login .login-form .btn-secondary:not(#btnGoogleLogin):hover {
   background: #f3f2f7 !important;
 }
 
 /* Benefícios com ícones (escudo e celular), separados por uma linha */
-#mfe-zeev-login form::after {
+#mfe-zeev-login .login-form form::after {
   content: "Login único (SSO) com autenticação segura\A Disponível como aplicativo no celular";
   white-space: pre-line;
   display: block;
@@ -221,6 +221,12 @@
     height: 342px;
     background: url(hero.png) 0 0 / 700px 342px no-repeat;
     pointer-events: none;
+  }
+
+  /* Painel das abas "Monitorar" e "Instalar": desce para baixo do menu,
+     que agora é fixo no topo e não ocupa mais espaço no fluxo */
+  #mfe-zeev-login .desktop-content-view {
+    padding-top: 84px !important;
   }
 
   /* ----- Menu do cabeçalho: à direita, 20px do topo ----- */
@@ -337,7 +343,7 @@
   }
   /* Benefícios: fonte um pouco menor para cada um caber em uma linha
      (os ícones ficam alinhados por linha) */
-  #mfe-zeev-login form::after {
+  #mfe-zeev-login .login-form form::after {
     font-size: 13px;
     letter-spacing: -.1px;
   }
