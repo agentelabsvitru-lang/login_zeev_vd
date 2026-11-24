@@ -25,7 +25,7 @@
 @font-face { font-family: "Inter"; font-weight: 600; font-display: swap; src: url(fonts/inter-600.woff2) format("woff2"); }
 
 /* Margem lateral do conteúdo: alinha tudo a um bloco de 1200px centralizado */
-:root {
+:root  {
   --vd-margem: max(32px, calc(50vw - 600px));
   --vd-fundo: #1d1934;
   --vd-amarelo: #fec53e;
@@ -49,11 +49,11 @@
 }
 
 #mfe-zeev-login :has(.login-form),
-.desktop-content-view {
+#mfe-zeev-login .desktop-content-view {
   background: #0000 !important;
 }
 
-* {
+#mfe-zeev-login, #mfe-zeev-login * {
   scrollbar-color: #fff3 #0000;
 }
 
@@ -61,7 +61,7 @@
 /* ---------------------------------------------------------------------
    2. LOGO DO CABEÇALHO (logo-header.png)
    --------------------------------------------------------------------- */
-.logo-field::after {
+#mfe-zeev-login .logo-field::after {
   content: "";
   position: fixed;
   top: 18px;
@@ -75,7 +75,7 @@
 /* ---------------------------------------------------------------------
    3. CARD "ACESSE SUA CONTA"
    --------------------------------------------------------------------- */
-.login-form {
+#mfe-zeev-login .login-form {
   position: relative;
   box-sizing: border-box !important;
   width: 100% !important;
@@ -95,7 +95,7 @@
 }
 
 /* Logo do card escondido; o espaço dele vira o título */
-.logo-field {
+#mfe-zeev-login .logo-field {
   background-size: 0 0 !important;
   width: auto !important;
   height: auto !important;
@@ -104,7 +104,7 @@
   padding: 0 !important;
 }
 
-.logo-field::before {
+#mfe-zeev-login .logo-field::before {
   content: "Acesse sua conta";
   display: block;
   font: 700 24px/1.25 "Sora", "Segoe UI", sans-serif;
@@ -112,7 +112,7 @@
 }
 
 /* Texto de apoio (6px abaixo do título; 20px até o botão) */
-form::before {
+#mfe-zeev-login form::before {
   content: "Use seu e-mail corporativo para ver seus protocolos e abrir novas solicitações.";
   display: block;
   margin: 6px 0 20px;
@@ -121,7 +121,7 @@ form::before {
 }
 
 /* Botão "Entrar com Microsoft" */
-.btn-secondary {
+#mfe-zeev-login .btn-secondary:not(#btnGoogleLogin) {
   width: 100% !important;
   height: 52px !important;
   margin: 0 !important;
@@ -139,24 +139,24 @@ form::before {
   box-shadow: none !important;
   cursor: pointer;
 }
-.btn-secondary span,
-.btn-secondary div,
-.btn-secondary p {
+#mfe-zeev-login .btn-secondary:not(#btnGoogleLogin) span,
+#mfe-zeev-login .btn-secondary:not(#btnGoogleLogin) div,
+#mfe-zeev-login .btn-secondary:not(#btnGoogleLogin) p {
   color: #1d1934 !important;
   font: 600 16px "Inter", system-ui, sans-serif !important;
   margin: 0 !important;
 }
-.btn-secondary img,
-.btn-secondary svg {
+#mfe-zeev-login .btn-secondary:not(#btnGoogleLogin) img,
+#mfe-zeev-login .btn-secondary:not(#btnGoogleLogin) svg {
   width: 20px !important;
   height: 20px !important;
 }
-.btn-secondary:hover {
+#mfe-zeev-login .btn-secondary:not(#btnGoogleLogin):hover {
   background: #f3f2f7 !important;
 }
 
 /* Benefícios com ícones (escudo e celular), separados por uma linha */
-form::after {
+#mfe-zeev-login form::after {
   content: "Login único (SSO) com autenticação segura\A Disponível como aplicativo no celular";
   white-space: pre;
   display: block;
@@ -175,7 +175,7 @@ form::after {
 /* ---------------------------------------------------------------------
    4. POSICIONAMENTO (padrão: celular e abas Monitorar / Instalar)
    --------------------------------------------------------------------- */
-.col-lg-4:has(.login-form) {
+#mfe-zeev-login .col-lg-4:has(.login-form) {
   min-height: 100vh;
   display: flex !important;
   flex-direction: column;
@@ -189,7 +189,7 @@ form::after {
 @media (min-width: 992px) {
 
   /* Card: alinhado à direita do bloco de 1200px, 127px do topo */
-  :has(#appsCardsLg.active) .col-lg-4:has(.login-form) {
+  #mfe-zeev-login:has(#appsCardsLg.active) .col-lg-4:has(.login-form) {
     position: fixed;
     top: 127px;
     right: var(--vd-margem);
@@ -206,13 +206,13 @@ form::after {
     z-index: 9;
   }
 
-  :has(#appsCardsLg.active) .desktop-content-view {
+  #mfe-zeev-login:has(#appsCardsLg.active) .desktop-content-view {
     margin-left: 33%;
   }
 
   /* Chamada à esquerda (hero.png, 700x342 em 2x). Só na aba
      "Iniciar sessão", para não cobrir o conteúdo das outras abas. */
-  :has(#appsCardsLg.active) #mfe-zeev-login::after {
+  #mfe-zeev-login:has(#appsCardsLg.active)::after {
     content: "";
     position: fixed;
     top: 128px;
@@ -224,7 +224,7 @@ form::after {
   }
 
   /* ----- Menu do cabeçalho: à direita, 20px do topo ----- */
-  .desktop-content-view .nav {
+  #mfe-zeev-login .desktop-content-view .nav {
     position: fixed !important;
     top: 20px;
     right: var(--vd-margem);
@@ -238,7 +238,7 @@ form::after {
     box-shadow: none !important;
     z-index: 10;
   }
-  .desktop-content-view .nav > * {
+  #mfe-zeev-login .desktop-content-view .nav > * {
     margin: 0 !important;
     padding: 0 !important;
     border: 0 !important;
@@ -247,7 +247,7 @@ form::after {
 
   /* Links: o texto original fica invisível (font-size 0) e o novo texto
      e o ícone entram pelo ::after e ::before */
-  .desktop-content-view .nav-link {
+  #mfe-zeev-login .desktop-content-view .nav-link {
     display: inline-flex !important;
     align-items: center;
     gap: 8px;
@@ -260,15 +260,15 @@ form::after {
     color: rgba(255, 255, 255, .82) !important;
     box-shadow: none !important;
   }
-  .desktop-content-view .nav-link:hover {
+  #mfe-zeev-login .desktop-content-view .nav-link:hover {
     background: rgba(255, 255, 255, .08) !important;
     color: #fff !important;
   }
-  .desktop-content-view .nav-link.active {
+  #mfe-zeev-login .desktop-content-view .nav-link.active {
     background: rgba(255, 255, 255, .12) !important;
     color: #fff !important;
   }
-  .desktop-content-view .nav-link::before {
+  #mfe-zeev-login .desktop-content-view .nav-link::before {
     content: "";
     width: 18px;
     height: 18px;
@@ -277,24 +277,24 @@ form::after {
     -webkit-mask: var(--vd-icone) center / 18px no-repeat;
     mask: var(--vd-icone) center / 18px no-repeat;
   }
-  .desktop-content-view .nav-link::after {
+  #mfe-zeev-login .desktop-content-view .nav-link::after {
     content: var(--vd-rotulo);
     font: 500 15px/1 "Inter", system-ui, sans-serif;
   }
 
   /* Rótulo e ícone de cada aba, pela ordem no menu (1ª, 2ª, 3ª) */
-  .desktop-content-view .nav > :nth-child(1) .nav-link,
-  .desktop-content-view .nav > .nav-link:nth-child(1) {
+  #mfe-zeev-login .desktop-content-view .nav > :nth-child(1) .nav-link,
+#mfe-zeev-login .desktop-content-view .nav > .nav-link:nth-child(1) {
     --vd-rotulo: "Iniciar sessão";
     --vd-icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3'/%3E%3C/svg%3E");
   }
-  .desktop-content-view .nav > :nth-child(2) .nav-link,
-  .desktop-content-view .nav > .nav-link:nth-child(2) {
+  #mfe-zeev-login .desktop-content-view .nav > :nth-child(2) .nav-link,
+#mfe-zeev-login .desktop-content-view .nav > .nav-link:nth-child(2) {
     --vd-rotulo: "Monitorar solicitações";
     --vd-icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 12h-4l-3 9L9 3l-3 9H2'/%3E%3C/svg%3E");
   }
-  .desktop-content-view .nav > :nth-child(3) .nav-link,
-  .desktop-content-view .nav > .nav-link:nth-child(3) {
+  #mfe-zeev-login .desktop-content-view .nav > :nth-child(3) .nav-link,
+#mfe-zeev-login .desktop-content-view .nav > .nav-link:nth-child(3) {
     --vd-rotulo: "Instalar como aplicativo";
     --vd-icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3'/%3E%3C/svg%3E");
   }
@@ -313,7 +313,8 @@ form::after {
    ===================================================================== */
 
 /* Escondidos por padrão (e em qualquer versão que não use a ajuda) */
-#vd-l, #vd-m { display: none; }
+#vd-l,
+#vd-m { display: none; }
 
 /* --- Link "Problemas para entrar?" --- */
 #vd-l::before {
@@ -333,21 +334,21 @@ form::after {
    Usa "anchor positioning" (Chrome e Edge 125+): o link se prende à
    borda de baixo e à borda direita do card e acompanha a posição dele.
    Ajuste fino:
-   - 55px = distância da borda de baixo do card até a linha do idioma
+   - 60px = distância da borda de baixo do card até a linha do idioma
      (maior sobe o link, menor desce);
    - 68px = distância da borda direita do card (maior puxa para a
      esquerda, menor empurra para a direita).
    Em navegadores sem suporte, fica numa posição fixa. */
-.login-form { anchor-name: --vd-card; }
+#mfe-zeev-login .login-form { anchor-name: --vd-card; }
 
 @media (min-width: 992px) {
-  :has(#appsCardsLg.active) #vd-l {
+  body:has(#appsCardsLg.active) #vd-l {
     display: block;
     top: 424px;
     right: calc(var(--vd-margem) + 68px);
   }
   @supports (anchor-name: --a) {
-    :has(#appsCardsLg.active) #vd-l {
+    body:has(#appsCardsLg.active) #vd-l {
       top: auto;
       bottom: calc(anchor(--vd-card bottom) + 60px);
       right: calc(anchor(--vd-card right) + 68px);
@@ -356,7 +357,7 @@ form::after {
 }
 /* Celular: centralizado no rodapé da tela, em branco */
 @media (max-width: 991px) {
-  body #vd-l {
+  body:has(#mfe-zeev-login) #vd-l {
     display: block;
     left: 0;
     right: 0;
