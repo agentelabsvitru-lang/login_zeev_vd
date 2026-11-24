@@ -158,7 +158,7 @@
 /* Benefícios com ícones (escudo e celular), separados por uma linha */
 #mfe-zeev-login form::after {
   content: "Login único (SSO) com autenticação segura\A Disponível como aplicativo no celular";
-  white-space: pre;
+  white-space: pre-line;
   display: block;
   margin-top: 20px;
   padding: 11px 0 0 28px;
@@ -301,6 +301,63 @@
 }
 
 
+
+/* ---------------------------------------------------------------------
+   5b. CELULAR E TABLET (até 991px)
+   - card com margem nas laterais, altura só do conteúdo (a Zeev esticava
+     o card até o fim da tela);
+   - logo acima do card, preso ao card (no celular o "fixed" ficava
+     dentro do card, branco sobre branco);
+   - barra de abas do celular da Zeev no tom escuro.
+   --------------------------------------------------------------------- */
+@media (max-width: 991px) {
+  #mfe-zeev-login .col-lg-4:has(.login-form) {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 100vh;
+    justify-content: flex-start !important;
+    padding: 104px 16px 160px !important;
+    box-sizing: border-box !important;
+  }
+  #mfe-zeev-login .login-form {
+    flex: none !important;
+    align-self: stretch;
+    border-radius: 20px !important;
+    padding: 28px 24px 24px !important;
+  }
+  #mfe-zeev-login .logo-field::after {
+    position: absolute;
+    top: -72px;
+    left: 4px;
+    width: 180px;
+    height: 38px;
+  }
+  #mfe-zeev-login .logo-field::before {
+    font-size: 22px;
+  }
+  /* Benefícios: fonte um pouco menor para cada um caber em uma linha
+     (os ícones ficam alinhados por linha) */
+  #mfe-zeev-login form::after {
+    font-size: 13px;
+    letter-spacing: -.1px;
+  }
+
+  /* Barra de abas inferior do celular (componente da Zeev) */
+  #mfe-zeev-login #mobileTab {
+    background: #16122b !important;
+    border-top: 1px solid rgba(255, 255, 255, .1) !important;
+  }
+  #mfe-zeev-login #mobileTab .nav-link {
+    color: rgba(255, 255, 255, .7) !important;
+    background: #0000 !important;
+  }
+  #mfe-zeev-login #mobileTab .nav-link.active {
+    color: #fff !important;
+    background: rgba(255, 255, 255, .12) !important;
+  }
+}
+
+
 /* =====================================================================
    6. AJUDA "PROBLEMAS PARA ENTRAR?"
    Os elementos vêm do campo da Zeev (HTML mínimo, sem texto):
@@ -355,16 +412,26 @@
     }
   }
 }
-/* Celular: centralizado no rodapé da tela, em branco */
+/* Celular: centralizado logo abaixo do card, em branco sobre o fundo
+   escuro (preso ao card por anchor positioning; sem suporte, fica fixo
+   acima da barra de abas do celular). */
 @media (max-width: 991px) {
   body:has(#mfe-zeev-login) #vd-l {
     display: block;
     left: 0;
     right: 0;
-    bottom: 24px;
+    bottom: 96px;
     text-align: center;
     color: #fff;
     opacity: .85;
+    text-decoration: underline;
+  }
+  @supports (anchor-name: --a) {
+    body:has(#mfe-zeev-login) #vd-l {
+      position: absolute;
+      bottom: auto;
+      top: calc(anchor(--vd-card bottom) + 20px);
+    }
   }
 }
 
@@ -504,3 +571,16 @@
 }
 #vd-m .vd-ok::before { content: "Entendi"; }
 #vd-m .vd-ok:hover { background: #2c2650; }
+
+/* Janela de ajuda mais compacta no celular (no fim do arquivo para
+   prevalecer sobre as regras acima) */
+@media (max-width: 600px) {
+  #vd-m > .vd-p {
+    padding: 24px 18px 18px;
+    border-radius: 16px;
+  }
+  #vd-m p {
+    padding: 12px 12px 12px 46px;
+    background-position: 12px 12px !important;
+  }
+}
