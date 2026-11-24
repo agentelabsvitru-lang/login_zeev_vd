@@ -443,6 +443,7 @@
 #vd-m p:nth-of-type(1) { background: #faf9fc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Ccircle cx='13' cy='13' r='13' fill='%23fec53e'/%3E%3Ctext x='13' y='17.5' text-anchor='middle' font-family='Arial' font-weight='700' font-size='13' fill='%231d1934'%3E1%3C/text%3E%3C/svg%3E") 16px 14px / 26px no-repeat; }
 #vd-m p:nth-of-type(2) { background: #faf9fc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Ccircle cx='13' cy='13' r='13' fill='%23fec53e'/%3E%3Ctext x='13' y='17.5' text-anchor='middle' font-family='Arial' font-weight='700' font-size='13' fill='%231d1934'%3E2%3C/text%3E%3C/svg%3E") 16px 14px / 26px no-repeat; }
 #vd-m p:nth-of-type(3) { background: #faf9fc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Ccircle cx='13' cy='13' r='13' fill='%23fec53e'/%3E%3Ctext x='13' y='17.5' text-anchor='middle' font-family='Arial' font-weight='700' font-size='13' fill='%231d1934'%3E3%3C/text%3E%3C/svg%3E") 16px 14px / 26px no-repeat; }
+#vd-m p:nth-of-type(4) { background: #faf9fc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Ccircle cx='13' cy='13' r='13' fill='%23fec53e'/%3E%3Ctext x='13' y='17.5' text-anchor='middle' font-family='Arial' font-weight='700' font-size='13' fill='%231d1934'%3E4%3C/text%3E%3C/svg%3E") 16px 14px / 26px no-repeat; }
 
 /* ---- TEXTOS DAS CAUSAS (edite aqui) ---- */
 #vd-m p:nth-of-type(1)::before {
@@ -464,6 +465,28 @@
 }
 #vd-m p:nth-of-type(3)::after {
   content: "Limpe o cache e os cookies: aperte Ctrl + Shift + Delete, marque \"Cookies e outros dados do site\" e \"Imagens e arquivos armazenados em cache\" e clique em Limpar dados. Depois, feche o navegador, abra de novo e tente entrar.";
+}
+
+#vd-m p:nth-of-type(4)::before {
+  content: "Ainda tem dúvidas sobre o acesso?";
+}
+/* O 4º item tem um link de e-mail de verdade (vem do HTML do campo):
+   o texto todo é clicável e abre o e-mail com o endereço preenchido. */
+#vd-m p:nth-of-type(4) a {
+  display: block;
+  margin-top: 4px;
+  font: 400 14px/1.55 "Inter", system-ui, sans-serif;
+  color: #5b5873;
+  text-decoration: none;
+}
+#vd-m p:nth-of-type(4) a::before {
+  content: "Envie um e-mail para ";
+}
+#vd-m p:nth-of-type(4) a::after {
+  content: "processos@vitru.com.br";
+  color: #4b3bd1;
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 /* Botão "Entendi" (fecha a janela) */
