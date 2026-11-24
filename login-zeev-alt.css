@@ -301,3 +301,166 @@ form::after {
     --vd-icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3'/%3E%3C/svg%3E");
   }
 }
+
+
+/* =====================================================================
+   6. AJUDA "PROBLEMAS PARA ENTRAR?"
+   Os elementos vêm do campo da Zeev (HTML mínimo, sem texto):
+     <input type="checkbox" id="vd-t" hidden>
+     <label for="vd-t" id="vd-l"></label>
+     <div id="vd-m">...</div>
+   O clique no link marca a caixa escondida (#vd-t), e isso abre a
+   janela. Todo o texto e o visual ficam aqui; para mudar as
+   orientações, edite os "content" abaixo.
+   ===================================================================== */
+
+/* Escondidos por padrão (e em qualquer versão que não use a ajuda) */
+#vd-l, #vd-m { display: none; }
+
+/* --- Link "Problemas para entrar?" --- */
+#vd-l::before {
+  content: "Problemas para entrar?";
+}
+#vd-l {
+  position: fixed;
+  z-index: 11;
+  font: 400 14px/17px "Inter", system-ui, sans-serif;
+  color: #4b3bd1;
+  cursor: pointer;
+}
+#vd-l:hover { text-decoration: underline; }
+
+/* Desktop, aba "Iniciar sessão": na linha do idioma, à direita do card */
+@media (min-width: 992px) {
+  :has(#appsCardsLg.active) #vd-l {
+    display: block;
+    top: 424px;
+    right: calc(var(--vd-margem) + 36px);
+  }
+}
+/* Celular: centralizado no rodapé da tela, em branco */
+@media (max-width: 991px) {
+  body #vd-l {
+    display: block;
+    left: 0;
+    right: 0;
+    bottom: 24px;
+    text-align: center;
+    color: #fff;
+    opacity: .85;
+  }
+}
+
+/* --- Janela de ajuda --- */
+#vd-t:checked ~ #vd-m {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(16, 12, 32, .6);
+  backdrop-filter: blur(4px);
+}
+
+/* Área escura em volta: clicar nela fecha a janela */
+#vd-m > .vd-x {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+/* Painel branco */
+#vd-m > .vd-p {
+  position: relative;
+  width: 560px;
+  max-width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px 36px 28px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
+  font-family: "Inter", system-ui, sans-serif;
+  color: #1d1934;
+}
+
+/* Título e introdução */
+#vd-m b::before {
+  content: "Problemas para entrar?";
+  display: block;
+  font: 700 22px/1.3 "Sora", "Segoe UI", sans-serif;
+}
+#vd-m i::before {
+  content: "Veja as causas mais comuns e o que fazer em cada uma.";
+  display: block;
+  margin: 6px 0 20px;
+  font: 400 15px/1.5 "Inter", system-ui, sans-serif;
+  font-style: normal;
+  color: #5b5873;
+}
+
+/* Cada causa: número, título (::before) e orientação (::after) */
+#vd-m p {
+  position: relative;
+  margin: 0 0 14px;
+  padding: 14px 16px 14px 52px;
+  border: 1px solid #ebe8f2;
+  border-radius: 12px;
+  background: #faf9fc;
+}
+#vd-m p::before {
+  display: block;
+  font: 600 15px/1.4 "Inter", system-ui, sans-serif;
+  color: #1d1934;
+}
+#vd-m p::after {
+  display: block;
+  margin-top: 4px;
+  white-space: pre-line;
+  font: 400 14px/1.55 "Inter", system-ui, sans-serif;
+  color: #5b5873;
+}
+/* Círculo amarelo com o número de cada causa */
+#vd-m p:nth-of-type(1) { background: #faf9fc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Ccircle cx='13' cy='13' r='13' fill='%23fec53e'/%3E%3Ctext x='13' y='17.5' text-anchor='middle' font-family='Arial' font-weight='700' font-size='13' fill='%231d1934'%3E1%3C/text%3E%3C/svg%3E") 16px 14px / 26px no-repeat; }
+#vd-m p:nth-of-type(2) { background: #faf9fc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Ccircle cx='13' cy='13' r='13' fill='%23fec53e'/%3E%3Ctext x='13' y='17.5' text-anchor='middle' font-family='Arial' font-weight='700' font-size='13' fill='%231d1934'%3E2%3C/text%3E%3C/svg%3E") 16px 14px / 26px no-repeat; }
+#vd-m p:nth-of-type(3) { background: #faf9fc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Ccircle cx='13' cy='13' r='13' fill='%23fec53e'/%3E%3Ctext x='13' y='17.5' text-anchor='middle' font-family='Arial' font-weight='700' font-size='13' fill='%231d1934'%3E3%3C/text%3E%3C/svg%3E") 16px 14px / 26px no-repeat; }
+
+/* ---- TEXTOS DAS CAUSAS (edite aqui) ---- */
+#vd-m p:nth-of-type(1)::before {
+  content: "Você ainda não tem usuário na Zeev";
+}
+#vd-m p:nth-of-type(1)::after {
+  content: "O acesso à Zeev é liberado pelo seu gestor imediato. Peça a ele que abra a Solicitação de usuário Zeev em seu nome. Depois que o usuário for criado, entre com o seu e-mail corporativo.";
+}
+
+#vd-m p:nth-of-type(2)::before {
+  content: "Você está conectado com outra conta Microsoft";
+}
+#vd-m p:nth-of-type(2)::after {
+  content: "Se o navegador já está conectado a uma conta Microsoft de outro domínio (outro e-mail, de outra empresa ou pessoal), o login não encontra o seu usuário na Zeev.\A Abra uma janela anônima (Ctrl + Shift + N no Chrome e no Edge) e entre com o e-mail corporativo cadastrado na Zeev.";
+}
+
+#vd-m p:nth-of-type(3)::before {
+  content: "Dados antigos guardados no navegador (cache)";
+}
+#vd-m p:nth-of-type(3)::after {
+  content: "Limpe o cache e os cookies: aperte Ctrl + Shift + Delete, marque \"Cookies e outros dados do site\" e \"Imagens e arquivos armazenados em cache\" e clique em Limpar dados. Depois, feche o navegador, abra de novo e tente entrar.";
+}
+
+/* Botão "Entendi" (fecha a janela) */
+#vd-m .vd-ok {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  margin-top: 8px;
+  border-radius: 10px;
+  background: #1d1934;
+  color: #fff;
+  font: 600 15px "Inter", system-ui, sans-serif;
+  cursor: pointer;
+}
+#vd-m .vd-ok::before { content: "Entendi"; }
+#vd-m .vd-ok:hover { background: #2c2650; }
